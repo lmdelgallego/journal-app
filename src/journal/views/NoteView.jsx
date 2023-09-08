@@ -34,7 +34,7 @@ export const NoteView = () => {
           minRows={5}
         />
       </Grid>
-      {/* Image Gallery */}
+
       <ImageGallery />
     </Grid>
   )
