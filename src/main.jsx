@@ -1,11 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import { JournalApp } from './JournalApp'
 
 import './styles.scss'
-import { JournalApp } from './JournalApp'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <JournalApp/>
+      <JournalApp/>
   </React.StrictMode>,
 )
