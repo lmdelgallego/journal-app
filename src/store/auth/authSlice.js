@@ -11,9 +11,10 @@ const authSlice = createSlice({
     errorMessage: null,
   },
   reducers: {
-    login: (state, action) => {},
-    logout: (state, action) => {},
-    checkingCredentials: (state, action) => {
+    login: (state, {payload}) => {},
+    logout: (state, {payload}) => {},
+    checkingCredentials: (state) => {
+      state.status = 'checking';
     },
     // setAuthStatus: (state, action) => {
     //   state.status = action.payload;
