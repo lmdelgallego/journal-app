@@ -18,7 +18,7 @@ export const startGoogleLogin = () => async (dispatch) => {
 export const startCreateUser = (email, password, displayName) => async (dispatch) => {
   dispatch(checkingCredentials())
   const result = await singUpWithEmail(email, password, displayName);
-  console.log(result);
-  if( !result.ok ) return dispatch(logout( result.error.message ))
+  const {ok, errorMessage} = result;
+  if( !ok ) return dispatch(logout( {errorMessage} ))
   dispatch(login(result))
 }
