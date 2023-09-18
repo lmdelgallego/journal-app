@@ -12,7 +12,7 @@ const formData = {
 const formValidations = {
   email: [ (value) => value.includes('@'), 'Please enter a valid email address' ],
   password: [ (value) => value.length >= 6, 'Password must be at least 6 characters long' ],
-  name: [ (value) => value.length >= 1, 'Name is required' ],
+  displayName: [ (value) => value.length >= 1, 'Name is required' ],
 }
 
 // const formValidations = {
@@ -34,12 +34,15 @@ const formValidations = {
 // }
 
 const RegisterPage = () => {
-  const { displayName, email, password, onInputChange, formState, displayNameValid } = useForm(formData, formValidations);
+  const { displayName, email, password, displayNameValid, onInputChange, formState } = useForm(formData, formValidations);
+
+  console.log(displayNameValid);
 
   const onSubmit = (e) => {
     e.preventDefault();
     console.log(formState);
   };
+
   return (
     <AuthLayout title='Register'>
       <form onSubmit={onSubmit}>
@@ -52,7 +55,7 @@ const RegisterPage = () => {
               name='displayName'
               value={displayName}
               onChange={onInputChange}
-              error={!displayNameValid}
+              error={displayNameValid}
               helperText={displayNameValid}
               fullWidth
             />
