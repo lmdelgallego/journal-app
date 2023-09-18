@@ -2,11 +2,12 @@ import { Button, Grid, Link, TextField, Typography } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
 import { AuthLayout } from '../layout/AuthLayout';
 import { useForm } from '../../hooks';
+import { useState } from 'react';
 
 const formData = {
-  email: 'lmdelgallego@google.com',
-  password: '123456789',
-  displayName: 'Luis Del Gallego',
+  email: '',
+  password: '',
+  displayName: '',
 };
 
 const formValidations = {
@@ -34,13 +35,14 @@ const formValidations = {
 // }
 
 const RegisterPage = () => {
-  const { displayName, email, password, displayNameValid, onInputChange, formState } = useForm(formData, formValidations);
 
-  console.log(displayNameValid);
+  const [formSubmitted, setFormSubmitted] = useState(false)
+  const { displayName, email, password, displayNameValid, emailValid, passwordValid, isFormValid, onInputChange, formState } = useForm(formData, formValidations);
 
   const onSubmit = (e) => {
     e.preventDefault();
     console.log(formState);
+    setFormSubmitted(true);
   };
 
   return (
@@ -55,7 +57,7 @@ const RegisterPage = () => {
               name='displayName'
               value={displayName}
               onChange={onInputChange}
-              error={displayNameValid}
+              error={!!displayNameValid && formSubmitted}
               helperText={displayNameValid}
               fullWidth
             />
@@ -68,6 +70,8 @@ const RegisterPage = () => {
               name='email'
               value={email}
               onChange={onInputChange}
+              error={!!emailValid&& formSubmitted}
+              helperText={emailValid}
               fullWidth
             />
           </Grid>
@@ -79,6 +83,8 @@ const RegisterPage = () => {
               name='password'
               value={password}
               onChange={onInputChange}
+              error={!!passwordValid&& formSubmitted}
+              helperText={passwordValid}
               fullWidth
             />
           </Grid>
