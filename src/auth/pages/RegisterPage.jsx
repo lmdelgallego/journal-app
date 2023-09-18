@@ -1,26 +1,55 @@
-import { Google } from "@mui/icons-material"
 import { Button, Grid, Link, TextField, Typography } from "@mui/material"
 import { Link as RouterLink } from "react-router-dom"
 import { AuthLayout } from "../layout/AuthLayout"
+import { useForm } from "../../hooks"
+
+const formData = {
+  email: 'lmdelgallego@google.com',
+  password: '123456789',
+  displayName: 'Luis Del Gallego',
+}
 
 const RegisterPage = () => {
+
+  const { displayName, email, password, onInputChange, formState } = useForm(formData);
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    console.log(formState);
+  }
   return (
     <AuthLayout title="Register">
-        <form action="">
+        <form onSubmit={onSubmit}>
           <Grid container>
             <Grid item xs={12} sx={{ mb: 2}}>
-              <TextField label="Name" type="text" placeholder="John Dow" fullWidth />
+              <TextField
+                label="Name"
+                type="text"
+                placeholder="John Dow"
+                name="displayName"
+                value={displayName}
+                onChange={onInputChange}
+                fullWidth
+              />
             </Grid>
             <Grid item xs={12} sx={{ mb: 2}}>
-              <TextField label="Email" type="email" placeholder="mail@company.com" fullWidth />
+              <TextField label="Email" type="email" placeholder="mail@company.com"
+              name="email"
+              value={email}
+              onChange={onInputChange}
+              fullWidth />
             </Grid>
             <Grid item xs={12} sx={{ mb: 2}}>
-              <TextField label="Password" type="password" placeholder="Password" fullWidth />
+              <TextField label="Password" type="password" placeholder="Password"
+              name="password"
+              value={password}
+              onChange={onInputChange}
+              fullWidth />
             </Grid>
 
             <Grid container spacing={2} sx={{ mb: 2 }}>
               <Grid item xs={12} sm={6} >
-                <Button variant="contained" fullWidth>Sign Up</Button>
+                <Button type="submit" variant="contained" fullWidth>Sign Up</Button>
               </Grid>
 
             </Grid>
