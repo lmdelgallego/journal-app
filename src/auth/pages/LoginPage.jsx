@@ -5,7 +5,7 @@ import { Link as RouterLink } from "react-router-dom"
 import { AuthLayout } from "../layout/AuthLayout"
 import { useForm } from "../../hooks"
 import { useDispatch, useSelector } from "react-redux"
-import { checkAuth, startGoogleLogin } from "../../store/auth/thunks"
+import { startGoogleLogin, startLoginEmailPassword } from "../../store/auth"
 
 const LoginPage = () => {
 
@@ -21,7 +21,7 @@ const LoginPage = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    dispatch(checkAuth(email, password))
+    dispatch(startLoginEmailPassword(email, password))
   }
 
   const onGoogleLogin = () => {
