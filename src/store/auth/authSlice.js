@@ -36,6 +36,7 @@ const authSlice = createSlice({
     },
     checkingCredentials: (state) => {
       state.status = 'checking';
+      state.errorMessage = null;
     },
     // setAuthStatus: (state, action) => {
     //   state.status = action.payload;
