@@ -32,8 +32,19 @@ const journalSlice = createSlice({
     },
     setSaving: (state) => {
       state.isSaving = true;
+      // state.saveMessage = 'Saving note';
     },
-    updateNote: (state, action) => {},
+    updateNote: (state, action) => {
+      state.isSaving = false;
+      const { id, ...note } = action.payload;
+      const noteIndex = state.notes.findIndex(note => note.id === id);
+      if(noteIndex !== -1) {
+        state.notes[noteIndex] = {
+          ...state.notes[noteIndex],
+          ...note
+        }
+      }
+    },
     deleteNoteById: (state, action) => {}
   }
 });
