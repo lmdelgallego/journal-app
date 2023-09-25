@@ -1,5 +1,6 @@
 import { useEffect, useMemo } from "react"
 import dayjs from "dayjs"
+import Swal from "sweetalert2"
 import { SaveOutlined } from "@mui/icons-material"
 import { Button, Grid, TextField, Typography } from "@mui/material"
 import { ImageGallery } from "../components"
@@ -8,9 +9,11 @@ import { useForm } from "../../hooks"
 import { setActiveNote } from "../../store/journal/journalSlice"
 import { startSaveNote } from "../../store/journal"
 
+import 'sweetalert2/dist/sweetalert2.css'
+
 export const NoteView = () => {
   const dispatch = useDispatch();
-  const { active: activeNote } = useSelector(state => state.journal);
+  const { active: activeNote, saveMessage, isSaving } = useSelector(state => state.journal);
   const { body, title, date, onInputChange, formState } = useForm(activeNote)
 
   const dateString = useMemo(() => {
@@ -20,6 +23,17 @@ export const NoteView = () => {
   useEffect(() => {
     dispatch(setActiveNote(formState))
   }, [formState])
+
+  useEffect(() => {
+    if (saveMessage.length > 0) {
+      Swal.fire({
+        title: 'Saved',
+        text: saveMessage,
+        icon: 'success',
+        confirmButtonText: 'Ok'
+      })
+    }
+  }, [saveMessage])
 
   const handlerSave = () => {
     dispatch(startSaveNote())
@@ -37,7 +51,7 @@ export const NoteView = () => {
         <Typography fontSize={39} fontWeight='light'>{dateString}</Typography>
       </Grid>
       <Grid item >
-        <Button onClick={handlerSave} color="primary" sx={{padding: 2}}>
+        <Button onClick={handlerSave} color="primary" sx={{padding: 2}} disabled={isSaving}>
           <SaveOutlined sx={{ fontSize: 30, mr: 1}}/>
           Save
         </Button>
