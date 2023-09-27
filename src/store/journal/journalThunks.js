@@ -50,14 +50,11 @@ export const startUploadingImages = (images = []) => async ( dispatch, getState 
   dispatch(setSaving());
   const { uid } = getState().auth;
   if(!uid) throw new Error('uid is required');
-
   const filesUploadPromises = []
-  // await fileUpload(images[0])
   for (const file of images) {
     filesUploadPromises.push(fileUpload(file));
   }
   const imageUrls = await Promise.all(filesUploadPromises);
   dispatch(setImagesToNote(imageUrls));
-  // const { active: activeNote } = getState().journal;
 
 };
