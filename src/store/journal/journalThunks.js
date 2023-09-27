@@ -1,7 +1,7 @@
 import { collection, doc, setDoc } from "firebase/firestore/lite";
 import { FirebaseDB } from "../../firebase/config";
 import { addNewEmptyNote, savingNewNote, setActiveNote, setNotes, setSaving, updateNote } from "./journalSlice";
-import { loadNotes } from "../../journal/helpers";
+import { fileUpload, loadNotes } from "../../journal/helpers";
 
 export const startNewNote = () => async ( dispatch, getState ) => {
 
@@ -44,8 +44,14 @@ export const startSaveNote = () => async ( dispatch, getState ) => {
   const docRef = await doc(FirebaseDB, 'journalApp', uid, 'notes', activeNote.id);
   await setDoc(docRef, noteToFirestore, { merge: true });
   dispatch(updateNote(activeNote))
-  // dispatch(setActiveNote({
-  //   ...note,
-  //   id
-  // }));
+};
+
+export const startUploadingImages = (images = []) => async ( dispatch, getState ) => {
+  dispatch(setSaving());
+  const { uid } = getState().auth;
+  if(!uid) throw new Error('uid is required');
+
+  await fileUpload(images[0])
+
+
 };

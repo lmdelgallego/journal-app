@@ -7,7 +7,7 @@ import { ImageGallery } from "../components"
 import { useDispatch, useSelector } from "react-redux"
 import { useForm } from "../../hooks"
 import { setActiveNote } from "../../store/journal/journalSlice"
-import { startSaveNote } from "../../store/journal"
+import { startSaveNote, startUploadingImages } from "../../store/journal"
 
 import 'sweetalert2/dist/sweetalert2.css'
 
@@ -44,7 +44,7 @@ export const NoteView = () => {
    const file = target.files;
     if (file === 0 ) return;
     console.log('subiendo archivos');
-    // dispatch(startUploadImage(file))
+    dispatch(startUploadingImages(file))
   }
 
   return (
