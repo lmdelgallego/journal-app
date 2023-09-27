@@ -1,6 +1,6 @@
 import { collection, doc, setDoc } from "firebase/firestore/lite";
 import { FirebaseDB } from "../../firebase/config";
-import { addNewEmptyNote, savingNewNote, setActiveNote, setNotes, setSaving, updateNote } from "./journalSlice";
+import { addNewEmptyNote, savingNewNote, setActiveNote, setImagesToNote, setNotes, setSaving, updateNote } from "./journalSlice";
 import { fileUpload, loadNotes } from "../../journal/helpers";
 
 export const startNewNote = () => async ( dispatch, getState ) => {
@@ -51,7 +51,13 @@ export const startUploadingImages = (images = []) => async ( dispatch, getState 
   const { uid } = getState().auth;
   if(!uid) throw new Error('uid is required');
 
-  await fileUpload(images[0])
-
+  const filesUploadPromises = []
+  // await fileUpload(images[0])
+  for (const file of images) {
+    filesUploadPromises.push(fileUpload(file));
+  }
+  const imageUrls = await Promise.all(filesUploadPromises);
+  dispatch(setImagesToNote(imageUrls));
+  // const { active: activeNote } = getState().journal;
 
 };
