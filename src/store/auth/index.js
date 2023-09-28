@@ -1,2 +1,2 @@
-export { default as authSlice } from './authSlice';
+export { default as authReducer } from './authSlice';
 export * from './thunks';

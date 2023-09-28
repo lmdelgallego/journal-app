@@ -2221,6 +2221,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"dayjs@npm:^1.11.10":
+  version: 1.11.10
+  resolution: "dayjs@npm:1.11.10"
+  checksum: a6b5a3813b8884f5cd557e2e6b7fa569f4c5d0c97aca9558e38534af4f2d60daafd3ff8c2000fed3435cfcec9e805bcebd99f90130c6d1c5ef524084ced588c4
+  languageName: node
+  linkType: hard
+
 "debug@npm:4, debug@npm:^4.1.0, debug@npm:^4.1.1, debug@npm:^4.3.2, debug@npm:^4.3.3":
   version: 4.3.4
   resolution: "debug@npm:4.3.4"
@@ -3583,6 +3590,7 @@ __metadata:
     "@types/react": ^18.2.15
     "@types/react-dom": ^18.2.7
     "@vitejs/plugin-react": ^4.0.3
+    dayjs: ^1.11.10
     eslint: ^8.45.0
     eslint-plugin-react: ^7.32.2
     eslint-plugin-react-hooks: ^4.6.0
@@ -3593,6 +3601,7 @@ __metadata:
     react-redux: ^8.1.2
     react-router-dom: ^6.15.0
     sass: ^1.66.1
+    sweetalert2: ^11.7.29
     vite: ^4.4.5
   languageName: unknown
   linkType: soft
@@ -4910,6 +4919,13 @@ __metadata:
   version: 1.0.0
   resolution: "supports-preserve-symlinks-flag@npm:1.0.0"
   checksum: 53b1e247e68e05db7b3808b99b892bd36fb096e6fba213a06da7fab22045e97597db425c724f2bbd6c99a3c295e1e73f3e4de78592289f38431049e1277ca0ae
+  languageName: node
+  linkType: hard
+
+"sweetalert2@npm:^11.7.29":
+  version: 11.7.29
+  resolution: "sweetalert2@npm:11.7.29"
+  checksum: 1774871fa6d77d39abe6fd05b139515c4caeb4ed02b32949b7051a89e3ac232a0ecdba9b81521826d0b6b8cb6fd6aa4317846c7efa17c12486f1f18c6b2ef2be
   languageName: node
   linkType: hard
 
