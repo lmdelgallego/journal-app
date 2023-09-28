@@ -58,7 +58,12 @@ const journalSlice = createSlice({
       state.saveMessage = '';
 
     },
-    deleteNoteById: (state, action) => {}
+    deleteNoteById: (state, action) => {
+      state.isSaving = false;
+      state.notes = state.notes.filter(note => note.id !== action.payload);
+      state.active = null;
+      state.saveMessage = '';
+    }
   }
 });
 
