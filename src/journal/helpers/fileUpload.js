@@ -12,7 +12,6 @@ export const fileUpload = async (file) => {
     });
     if(!resp.ok) throw new Error('Error uploading file');
     const cloudResp = await resp.json();
-    console.log(cloudResp);
     return {
       id: cloudResp.public_id,
       url: cloudResp.secure_url,
