@@ -2,6 +2,7 @@ import { beforeEach, describe, expect, test, vi } from "vitest";
 import { collection, deleteDoc, doc, setDoc } from "firebase/firestore/lite";
 import { startNewNote } from "../journalThunks";
 import { addNewEmptyNote, setActiveNote } from "../journalSlice";
+import { getEnvironments } from "../../../getEnviroments";
 
 
 
