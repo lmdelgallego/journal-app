@@ -49,7 +49,7 @@ const LoginPage = () => {
                 <Button type="submit" variant="contained" fullWidth disabled={isAuthenticating}>Login</Button>
               </Grid>
               <Grid item xs={12} sm={6} >
-                <Button variant="contained" onClick={onGoogleLogin} disabled={isAuthenticating} fullWidth>
+                <Button variant="contained" aria-label="google-btn" onClick={onGoogleLogin} disabled={isAuthenticating} fullWidth>
                   <Google/> <Typography sx={{ ml: 1 }}>Google</Typography>
                 </Button>
               </Grid>
