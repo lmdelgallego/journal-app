@@ -20,7 +20,6 @@ export const startNewNote = () => async ( dispatch, getState ) => {
   const docRef = await doc(collectionRef);
   await setDoc(docRef, newNote);
   newNote.id = docRef.id;
-  console.log({newNote});
   // dispatch
   dispatch(addNewEmptyNote(newNote))
   dispatch(setActiveNote(newNote))

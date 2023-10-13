@@ -7,7 +7,7 @@ export const STATUS_AUTH = {
 }
 
 
-const authSlice = createSlice({
+export const authSlice = createSlice({
   name: 'auth',
   initialState: {
     status: STATUS_AUTH.CHECKING,
@@ -32,7 +32,7 @@ const authSlice = createSlice({
       state.email = null;
       state.displayName = null;
       state.photoURL = null;
-      state.errorMessage = payload?.errorMessage;
+      state.errorMessage = payload?.errorMessage || null;
     },
     checkingCredentials: (state) => {
       state.status = 'checking';

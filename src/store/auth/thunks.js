@@ -2,8 +2,7 @@ import { loginWithEmail, singInWithGoogle, singUpWithEmail, logoutFirebase } fro
 import { checkingCredentials, login, logout } from "./authSlice"
 import { clearNotesLogout } from "../journal/journalSlice";
 
-export const checkAuth = (email, password) => async (dispatch) => {
-  console.log('checkAuth',{email, password});
+export const checkAuth = () => async (dispatch) => {
   dispatch(checkingCredentials())
 }
 

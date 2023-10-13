@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const journalSlice = createSlice({
+export const journalSlice = createSlice({
   name: 'journal',
   initialState: {
     isSaving: false,
