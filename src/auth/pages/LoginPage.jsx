@@ -31,7 +31,7 @@ const LoginPage = () => {
 
   return (
     <AuthLayout title="Login">
-        <form className='animate__animated animate__fadeIn animate__faster' onSubmit={onSubmit} >
+        <form aria-label="login-form" className='animate__animated animate__fadeIn animate__faster' onSubmit={onSubmit} >
           <Grid container>
             <Grid item xs={12} sx={{ mb: 2}}>
               <TextField label="Email" type="email" placeholder="mail@company.com"
@@ -46,7 +46,7 @@ const LoginPage = () => {
                 <Alert severity='error'>{errorMessage}</Alert>
               </Grid>
               <Grid item xs={12} sm={6} >
-                <Button type="submit" variant="contained" fullWidth disabled={isAuthenticating}>Login</Button>
+                <Button aria-label="login-btn" type="submit" variant="contained" fullWidth disabled={isAuthenticating}>Login</Button>
               </Grid>
               <Grid item xs={12} sm={6} >
                 <Button variant="contained" aria-label="google-btn" onClick={onGoogleLogin} disabled={isAuthenticating} fullWidth>
